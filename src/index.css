@@ -1,34 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
 
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --color-accent: var(--accent);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent-link: var(--accent-link);
   --color-border: var(--border);
   --color-card-bg: var(--card-bg);
+
+  --ease-apple: var(--apple-ease);
 }
 
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f7;
   --text-primary: #1d1d1f;
-  --text-secondary: #86868b;
-  --accent: #0066cc;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --accent-link: #0066cc;
   --border: #d2d2d7;
-  --card-bg: #f5f5f7;
+  --card-bg: #fbfbfd;
+  
+  --apple-ease: cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 .dark {
   --bg-primary: #000000;
-  --bg-secondary: #161617;
+  --bg-secondary: #1d1d1f;
   --text-primary: #f5f5f7;
-  --text-secondary: #86868b;
-  --accent: #2997ff;
+  --text-secondary: #a1a1a6;
+  --text-tertiary: #86868b;
+  --accent-link: #2997ff;
   --border: #424245;
   --card-bg: #1d1d1f;
 }
@@ -40,10 +47,64 @@ body {
   color: var(--text-primary);
   margin: 0;
   padding: 0;
+  line-height: 1.42857;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.015em;
+  line-height: 1.07;
+}
+
+/* Apple typography scale classes */
+.text-hero {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 112px);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.text-section {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.text-subhead {
+  font-family: var(--font-sans);
+  font-size: clamp(21px, 3vw, 28px);
+  line-height: 1.19;
+  font-weight: 400;
+  letter-spacing: 0.011em;
+  color: var(--text-tertiary);
+}
+.text-card-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.14;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.text-card-subtitle {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.24;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.text-body {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.text-price {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.24;
+  font-weight: 400;
+  color: var(--text-primary);
 }

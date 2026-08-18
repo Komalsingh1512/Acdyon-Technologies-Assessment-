@@ -3,7 +3,7 @@ import React from 'react';
 function DeviceSilhouette({ type }) {
   if (type === 'laptop') {
     return (
-      <svg viewBox="0 0 120 80" className="w-28 h-20 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-laptop-title">
+      <svg viewBox="0 0 120 80" className="w-28 h-20 text-accent-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-laptop-title">
         <title id="svg-laptop-title">Geometric representation of MacBook display with notch and keyboard base</title>
         {/* Screen Bezel */}
         <rect x="18" y="8" width="84" height="50" rx="3" className="stroke-text-primary" />
@@ -19,7 +19,7 @@ function DeviceSilhouette({ type }) {
 
   if (type === 'phone') {
     return (
-      <svg viewBox="0 0 80 120" className="w-16 h-24 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-phone-title">
+      <svg viewBox="0 0 80 120" className="w-16 h-24 text-accent-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-phone-title">
         <title id="svg-phone-title">Geometric outline representing an iPhone silhouette with Dynamic Island</title>
         {/* Phone body */}
         <rect x="16" y="8" width="48" height="104" rx="9" className="stroke-text-primary fill-text-primary/5" />
@@ -35,7 +35,7 @@ function DeviceSilhouette({ type }) {
 
   if (type === 'desktop') { // iMac
     return (
-      <svg viewBox="0 0 120 100" className="w-28 h-24 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-imac-title">
+      <svg viewBox="0 0 120 100" className="w-28 h-24 text-accent-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-imac-title">
         <title id="svg-imac-title">Geometric outline of an iMac screen and stand</title>
         {/* Screen */}
         <rect x="12" y="8" width="96" height="58" rx="2.5" className="stroke-text-primary fill-text-primary/5" />
@@ -49,19 +49,19 @@ function DeviceSilhouette({ type }) {
 
   if (type === 'mini') { // Mac mini
     return (
-      <svg viewBox="0 0 100 60" className="w-24 h-16 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-mini-title">
+      <svg viewBox="0 0 100 60" className="w-24 h-16 text-accent-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-mini-title">
         <title id="svg-mini-title">Minimalist outline of a Mac mini</title>
         {/* Body */}
         <rect x="12" y="22" width="76" height="16" rx="3.5" className="stroke-text-primary fill-text-primary/5" />
         {/* Indicator Dot */}
-        <circle cx="78" cy="30" r="1.2" fill="currentColor" className="text-accent stroke-none" />
+        <circle cx="78" cy="30" r="1.2" fill="currentColor" className="text-accent-link stroke-none" />
       </svg>
     );
   }
 
   if (type === 'studio') { // Mac Studio
     return (
-      <svg viewBox="0 0 100 70" className="w-24 h-18 text-accent" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-studio-title">
+      <svg viewBox="0 0 100 70" className="w-24 h-18 text-accent-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" role="img" aria-labelledby="svg-studio-title">
         <title id="svg-studio-title">Geometric silhouette of a Mac Studio workstation</title>
         {/* Body */}
         <rect x="12" y="12" width="76" height="44" rx="5" className="stroke-text-primary fill-text-primary/5" />
@@ -71,7 +71,7 @@ function DeviceSilhouette({ type }) {
         <rect x="28" y="38" width="1.5" height="5" rx="0.5" className="stroke-text-primary" />
         <rect x="34" y="38" width="1.5" height="5" rx="0.5" className="stroke-text-primary" />
         {/* Power LED */}
-        <circle cx="78" cy="41" r="1" fill="currentColor" className="text-accent stroke-none" />
+        <circle cx="78" cy="41" r="1" fill="currentColor" className="text-accent-link stroke-none" />
       </svg>
     );
   }
@@ -80,57 +80,69 @@ function DeviceSilhouette({ type }) {
 }
 
 export default function ProductCard({ product }) {
-  const { name, chip, price, spec2, silhouetteType } = product;
+  const { name, description, pricingDetails, colors, imageBg, image, category } = product;
+
+  // Differentiate layout proportions based on category
+  const isMac = category === 'mac';
+  const cardWidth = isMac ? 'w-[320px] md:w-[380px]' : 'w-[260px] md:w-[300px]';
+  const imageAspect = isMac ? 'aspect-[4/3]' : 'aspect-[4/5] md:aspect-square';
 
   return (
     <article 
+      className={`group relative flex flex-col items-center text-center ${cardWidth} flex-shrink-0 snap-center outline-none focus-visible:ring-2 focus-visible:ring-accent-link focus-visible:ring-offset-4 focus-visible:ring-offset-bg-primary rounded-xl`}
+      aria-label={name}
       tabIndex="0"
-      className="group relative flex flex-col justify-between items-center p-8 bg-card-bg border border-border rounded-3xl text-center outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
-      aria-label={`${name}, featuring ${chip}, priced from ${price}`}
     >
-      {/* Device Silhouette */}
-      <div className="h-32 flex items-center justify-center mb-6">
-        <DeviceSilhouette type={silhouetteType} />
+      {/* Image Container */}
+      <div className={`w-full ${imageAspect} ${imageBg || 'bg-white'} rounded-[32px] flex items-center justify-center p-6 mb-6 overflow-hidden transition-transform duration-300 ease-[var(--apple-ease)] group-hover:scale-[1.02]`}>
+        {image ? (
+          <img src={image} alt={name} className="w-full h-full object-contain drop-shadow-sm" />
+        ) : (
+          <div className="w-24 h-32 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400">No Image</div>
+        )}
       </div>
 
-      {/* Info Group */}
-      <div className="flex-1 flex flex-col items-center">
-        {/* Chip badge (Apple-style pill tag) */}
-        <span className="text-[10px] uppercase font-bold tracking-wider text-accent mb-2">
-          {chip}
-        </span>
+      {/* Color Swatches */}
+      {colors && colors.length > 0 && (
+        <div className="flex gap-2 justify-center mb-6" aria-label="Available colors">
+          {colors.map((color, index) => (
+            <div 
+              key={index}
+              className="w-3 h-3 rounded-full border border-black/10 dark:border-white/20 shadow-inner"
+              style={{ backgroundColor: color }}
+            />
+          ))}
+        </div>
+      )}
 
-        <h3 className="text-xl font-display font-semibold text-text-primary mb-1">
+      {/* Title & Description */}
+      <div className="flex flex-col items-center flex-1 w-full px-2">
+        <h3 className="text-[24px] font-semibold tracking-tight text-text-primary mb-2">
           {name}
         </h3>
+        <p className="text-[15px] leading-tight text-text-primary whitespace-pre-line mb-8 min-h-[40px]">
+          {description}
+        </p>
 
         {/* Pricing */}
-        <span className="text-sm font-normal text-text-primary mb-4">
-          {price}
-        </span>
-
-        {/* Specifications */}
-        <ul className="text-xs text-text-secondary space-y-1.5 mb-6 max-w-[200px]">
-          <li>{chip} Processor</li>
-          <li className="opacity-80">{spec2}</li>
-        </ul>
+        <p className="text-[12px] leading-[1.4] text-text-secondary whitespace-pre-line mb-8 min-h-[60px]">
+          {pricingDetails}
+        </p>
       </div>
 
-      {/* Pricing / Call-to-Action (Apple-style links and pills) */}
-      <div className="w-full pt-4 border-t border-border flex flex-col items-center gap-3">
-        <button
-          type="button"
-          className="px-4 py-1.5 text-xs font-semibold text-white bg-accent rounded-full hover:opacity-90 outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          aria-label={`Buy ${name}`}
-        >
-          Buy
-        </button>
+      {/* CTAs */}
+      <div className="flex items-center justify-center gap-6 mt-auto">
         <a 
           href="#" 
-          className="text-xs font-medium text-accent hover:underline inline-flex items-center outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-1"
-          aria-label={`Learn more about ${name}`}
+          className="bg-accent-link text-white text-[15px] font-normal px-5 py-2 rounded-full hover:bg-blue-600 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-link outline-none"
         >
-          Learn more <span className="ml-0.5" aria-hidden="true">&gt;</span>
+          Learn more
+        </a>
+        <a 
+          href="#" 
+          className="text-accent-link text-[15px] font-normal hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-link rounded outline-none"
+        >
+          Buy <span aria-hidden="true">&gt;</span>
         </a>
       </div>
     </article>
