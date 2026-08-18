@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function CategorySwitcher({ activeCategory, setActiveCategory }) {
   return (
-    <div className="flex justify-center py-8 bg-bg-primary border-b border-border">
+    <div className="bg-bg-secondary border-b border-border flex justify-center">
       <div 
-        className="inline-flex p-1 rounded-xl bg-bg-secondary border border-border" 
+        className="flex gap-8 px-4" 
         role="tablist" 
         aria-label="Product categories"
       >
@@ -14,13 +14,13 @@ export default function CategorySwitcher({ activeCategory, setActiveCategory }) 
           aria-controls="product-grid-panel"
           id="tab-mac"
           onClick={() => setActiveCategory('mac')}
-          className={`px-6 py-2.5 text-sm font-semibold rounded-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+          className={`py-4 text-sm font-normal border-b-2 outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             activeCategory === 'mac'
-              ? 'bg-accent text-white'
-              : 'text-text-secondary hover:text-text-primary'
+              ? 'border-text-primary text-text-primary font-semibold'
+              : 'border-transparent text-text-secondary hover:text-text-primary'
           }`}
         >
-          Mac Lineup
+          Mac
         </button>
         <button
           role="tab"
@@ -28,13 +28,13 @@ export default function CategorySwitcher({ activeCategory, setActiveCategory }) 
           aria-controls="product-grid-panel"
           id="tab-iphone"
           onClick={() => setActiveCategory('iphone')}
-          className={`px-6 py-2.5 text-sm font-semibold rounded-lg select-none outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+          className={`py-4 text-sm font-normal border-b-2 outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             activeCategory === 'iphone'
-              ? 'bg-accent text-white'
-              : 'text-text-secondary hover:text-text-primary'
+              ? 'border-text-primary text-text-primary font-semibold'
+              : 'border-transparent text-text-secondary hover:text-text-primary'
           }`}
         >
-          iPhone Lineup
+          iPhone
         </button>
       </div>
     </div>
