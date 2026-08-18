@@ -35,6 +35,13 @@ npm run build
 ```
 The output files will be created in the `dist/` directory, ready to be hosted.
 
+### 6. Independent Vercel Deployment
+A `vercel.json` configuration file is included in the project root to support independent deployments to Vercel (handling client-side routing rewrites automatically).
+To deploy independently:
+1. Ensure the Vercel CLI is installed (`npm i -g vercel`).
+2. Run the `vercel` command in the root directory.
+3. Follow the prompts to deploy to production.
+
 ---
 
 ## 📂 Project Structure
@@ -43,16 +50,19 @@ The output files will be created in the `dist/` directory, ready to be hosted.
 ├── index.html          # HTML entry point, imports SF Pro system fallbacks
 ├── package.json        # Project packages and execution scripts
 ├── vite.config.js      # Vite compilation configuration with Tailwind CSS v4 support
+├── vercel.json         # Vercel configuration for SPA routing rewrites
 └── src/
     ├── main.jsx        # Mounting entry point for the React application
-    ├── App.jsx         # Controls product datasets, dark mode, switcher state, and layout (user comments preserved)
-    ├── index.css       # Core stylesheet (CSS variables for dark/light Apple themes)
+    ├── App.jsx         # Controls product datasets, dark mode, switcher state, and layout
+    ├── index.css       # Core stylesheet with clamped Apple typography scaling
     └── components/     # Reusable UI component files
-        ├── Hero.jsx              # Centered typography, caption, and link CTAs
+        ├── Hero.jsx              # Centered massive typography and link CTAs
         ├── CategorySwitcher.jsx  # Apple-style subnavigation switching
-        ├── ProductGrid.jsx       # Responsive column CSS Grid
-        ├── ProductCard.jsx       # SVG silhouettes with notches, Apple buy pills, and hover lift effects
-        └── Footer.jsx            # Detailed Apple legal footnotes, columns, and copyright
+        ├── PromoGrid.jsx         # Apple Intelligence and iMac banner cards
+        ├── FeatureHighlights.jsx # Shot on iPhone and M4 performance feature banners
+        ├── ProductGrid.jsx       # Responsive horizontal-scrolling product carousel
+        ├── ProductCard.jsx       # Dynamic product cards using /public/images assets
+        └── Footer.jsx            # Expansive 'Fat Footer' with Newsletter CTA and links
 ```
 
 ---
