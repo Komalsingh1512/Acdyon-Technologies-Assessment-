@@ -1,4 +1,4 @@
-# Apple.com — Product Showcase Lineup
+# Nova — Premium Product Showcase
 
 A premium replica of **Apple.com's** product showcase and storefront UI built using **React**, **Vite**, and **Tailwind CSS v4**.
 
