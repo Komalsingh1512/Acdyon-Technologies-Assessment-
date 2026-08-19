@@ -56,12 +56,14 @@ To deploy independently:
     ├── App.jsx         # Controls product datasets, dark mode, switcher state, and layout
     ├── index.css       # Core stylesheet with clamped Apple typography scaling
     └── components/     # Reusable UI component files
-        ├── Hero.jsx              # Centered massive typography and link CTAs
+        ├── Navbar.jsx            # Premium sticky glassmorphism navigation with theme toggle
+        ├── Hero.jsx              # Centered massive typography, link CTAs, and hero graphic composition
         ├── CategorySwitcher.jsx  # Apple-style subnavigation switching
         ├── PromoGrid.jsx         # Apple Intelligence and iMac banner cards
         ├── FeatureHighlights.jsx # Shot on iPhone and M4 performance feature banners
         ├── ProductGrid.jsx       # Responsive horizontal-scrolling product carousel
         ├── ProductCard.jsx       # Dynamic product cards using /public/images assets
+        ├── DeviceSilhouette.jsx  # Standalone SVG silhouettes for device rendering
         └── Footer.jsx            # Expansive 'Fat Footer' with Newsletter CTA and links
 ```
 

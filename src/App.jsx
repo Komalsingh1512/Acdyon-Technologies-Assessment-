@@ -6,6 +6,7 @@ import FeatureHighlights from './components/FeatureHighlights';
 import CategorySwitcher from './components/CategorySwitcher';
 import ProductGrid from './components/ProductGrid';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 
 const IPHONE_PRODUCTS = [
   {
@@ -149,39 +150,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary flex flex-col">
-      {/* Apple-style Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-[20px] backdrop-saturate-[180%] bg-white/80 dark:bg-black/80 border-b border-border transition-colors duration-0">
-        <div className="max-w-5xl mx-auto px-4 h-[44px] flex items-center justify-between">
-          {/* Apple Logo SVG */}
-          <a href="#" className="text-text-primary hover:opacity-80 outline-none focus-visible:ring-2 focus-visible:ring-accent-link rounded p-1" aria-label="Apple Home">
-            <svg viewBox="0 0 18 18" className="h-[14px] w-auto fill-current" role="img" aria-hidden="true">
-              <path d="M15.56 10.1c-.04-2.23 1.82-3.3 1.9-3.35-1.04-1.52-2.66-1.73-3.23-1.78-1.37-.14-2.68.8-3.38.8-.7 0-1.78-.79-2.93-.77-1.5.02-2.9.88-3.67 2.22-1.56 2.72-.4 6.74 1.12 8.93.74 1.07 1.62 2.27 2.78 2.23 1.12-.05 1.55-.72 2.83-.72 1.27 0 1.67.67 2.84.65 1.19-.02 1.96-1.08 2.69-2.15.85-1.24 1.2-2.44 1.22-2.5-.03-.02-2.35-.9-2.37-3.58zM12.03 3.25c.61-.74 1.02-1.76.9-2.78-.88.04-1.95.59-2.58 1.33-.56.65-1.05 1.69-.92 2.7.98.08 1.99-.51 2.6-1.25z" />
-            </svg>
-          </a>
-
-          {/* Navigation Directory links */}
-          <nav className="hidden md:flex items-center gap-6 text-[12px] font-[400] tracking-tight text-text-secondary select-none">
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">Store</a>
-            <a href="#showcase" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">Mac</a>
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">iPad</a>
-            <a href="#showcase" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">iPhone</a>
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">Watch</a>
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">Vision</a>
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">AirPods</a>
-            <a href="#" className="hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link outline-none rounded px-1">Support</a>
-          </nav>
-
-          {/* Dark Mode Switcher button */}
-          <button
-            type="button"
-            onClick={() => setIsDark(!isDark)}
-            className="p-1 rounded-md text-text-secondary hover:text-text-primary focus-visible:ring-2 focus-visible:ring-accent-link focus-visible:outline-none"
-            aria-label={isDark ? 'Switch to Light theme' : 'Switch to Dark theme'}
-          >
-            {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
-          </button>
-        </div>
-      </header>
+      {/* Premium Navigation Header */}
+      <Navbar isDark={isDark} setIsDark={setIsDark} />
 
       {/* Main Layout Content */}
       <main className="flex-1">

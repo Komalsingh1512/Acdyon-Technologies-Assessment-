@@ -1,9 +1,10 @@
 import React from 'react';
+import DeviceSilhouette from './DeviceSilhouette';
 
 export default function Hero() {
   return (
     <section 
-      className="relative overflow-hidden bg-bg-primary px-[22px] md:px-[40px] lg:px-[min(max(4vw,40px),120px)] pt-[88px] pb-0 md:pt-[120px] flex flex-col items-center text-center border-b border-border min-h-[70vh] md:min-h-[90vh]"
+      className="relative bg-bg-primary px-[20px] md:px-[40px] pt-[88px] pb-[32px] md:pt-[120px] md:pb-[64px] flex flex-col items-center text-center border-b border-border"
       aria-labelledby="hero-heading"
     >
       <div className="max-w-[1200px] mx-auto flex flex-col items-center z-10">
@@ -32,10 +33,13 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Large Hero Graphic */}
-      <div className="mt-16 w-full max-w-[1400px] mx-auto flex-1 flex items-end justify-center relative translate-y-8 md:translate-y-24">
-        <img src="/images/mba_13_15_.jpg" alt="MacBook Air" className="w-[95%] md:w-[85%] h-auto object-contain drop-shadow-2xl" />
-        <img src="/images/iphone_17pro.jpg" alt="iPhone 17 Pro" className="w-[30%] md:w-[25%] h-auto object-contain absolute bottom-[-10%] right-[2%] md:right-[5%] drop-shadow-2xl z-10" />
+      {/* Large Hero Graphic Composition */}
+      <div className="mt-12 md:mt-16 relative w-[90%] md:w-[80%] max-w-[900px] mx-auto flex items-end justify-center rounded-[24px] md:rounded-[32px] overflow-hidden drop-shadow-2xl bg-white/5 dark:bg-black/5">
+        <img 
+          src="/images/hero_composite.png" 
+          alt="MacBook and iPhone" 
+          className="w-[110%] max-w-[110%] h-auto object-cover object-center scale-[1.05] md:scale-[1.1] translate-y-2"
+        />
       </div>
     </section>
   );
